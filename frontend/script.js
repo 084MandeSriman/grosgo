@@ -91,7 +91,7 @@ if (authBtn) {
         try {
             if (!isLogin) {
                 // REGISTER
-                const res = await fetch("http://localhost:3000/register", {
+                const res = await fetch("https://grosgo-backend-ohy8.onrender.com/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ name, email, password })
@@ -109,7 +109,7 @@ if (authBtn) {
 
             } else {
                 // LOGIN
-                const res = await fetch("http://localhost:3000/login", {
+                const res = await fetch("https://grosgo-backend-ohy8.onrender.com/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, password })
@@ -532,7 +532,7 @@ function placeOrder() {
         return;
     }
 
-    fetch("http://localhost:3000/orders", {
+    fetch("https://grosgo-backend-ohy8.onrender.com/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -899,7 +899,7 @@ async function openOrders() {
 
     try {
         const res = await fetch(
-            `http://localhost:3000/orders/${userEmail}`
+            `https://grosgo-backend-ohy8.onrender.com/orders/${userEmail}`
         );
         const orders = await res.json();
         myOrdersCache = orders;
@@ -1043,7 +1043,7 @@ async function cancelOrder(orderId) {
     if (!confirm("Cancel this order?")) return;
 
     try {
-        await fetch(`http://localhost:3000/orders/${orderId}`, {
+        await fetch(`https://grosgo-backend-ohy8.onrender.com/orders/${orderId}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ status: "Cancelled" })
@@ -1205,7 +1205,7 @@ async function updateDashboard() {
 
     try {
         const res = await fetch(
-            `http://localhost:3000/dashboard/${userEmail}`
+            `https://grosgo-backend-ohy8.onrender.com/dashboard/${userEmail}`
         );
 
         const data = await res.json();
@@ -1234,7 +1234,7 @@ async function updateGraph() {
 
     try {
         const res = await fetch(
-            `http://localhost:3000/dashboard/${userEmail}`
+            `https://grosgo-backend-ohy8.onrender.com/dashboard/${userEmail}`
         );
 
         const data = await res.json();
@@ -1409,7 +1409,7 @@ function renderProduct(p) {
 document.addEventListener("DOMContentLoaded", loadHomeSections);
 
 async function loadHomeSections() {
-    const res = await fetch("http://localhost:3000/products");
+    const res = await fetch("https://grosgo-backend-ohy8.onrender.com/products");
     const products = await res.json();
 
     products.forEach(p => {

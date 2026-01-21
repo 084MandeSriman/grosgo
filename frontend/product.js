@@ -82,7 +82,8 @@ async function loadSuggestions() {
   }
 
   try {
-    const url = `http://localhost:3000/products/suggestions?home_section=${product.home_section}&category=${product.category}&exclude=${product.name}`;
+    const url = `https://grosgo-backend-ohy8.onrender.com
+/products/suggestions?home_section=${product.home_section}&category=${product.category}&exclude=${product.name}`;
 
     console.log("➡️ Fetching:", url);
 

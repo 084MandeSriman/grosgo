@@ -42,7 +42,7 @@ function showSection(id){
 async function loadDashboard() {
   try {
     // ✅ GET ORDERS FROM MYSQL
-    const res = await fetch("http://localhost:3000/orders");
+    const res = await fetch("https://grosgo-backend-ohy8.onrender.com/orders");
     const orders = await res.json();
 
     document.getElementById("totalOrders").innerText = orders.length;
@@ -61,7 +61,7 @@ async function loadDashboard() {
     drawChart(orders);
 
     // ✅ USERS COUNT (MYSQL)
-    const userRes = await fetch("http://localhost:3000/users");
+    const userRes = await fetch("https://grosgo-backend-ohy8.onrender.com/users");
     const users = await userRes.json();
     document.getElementById("totalUsers").innerText = users.length;
 
@@ -86,7 +86,7 @@ function drawChart(orders){
 async function loadOrders() {
   const box = document.getElementById("adminOrders");
 
-  const res = await fetch("http://localhost:3000/orders");
+  const res = await fetch("https://grosgo-backend-ohy8.onrender.com/orders");
   const orders = await res.json();
 
   box.innerHTML = "";
@@ -112,7 +112,7 @@ async function loadOrders() {
 }
 async function updateOrderStatus(orderId, status) {
   try {
-    await fetch(`http://localhost:3000/orders/${orderId}`, {
+    await fetch(`https://grosgo-backend-ohy8.onrender.com/orders/${orderId}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status })
@@ -140,7 +140,7 @@ async function addProduct() {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/admin/products", {
+    const res = await fetch("https://grosgo-backend-ohy8.onrender.com/admin/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, price, stock, category,home_section: homeSection, image })
@@ -177,7 +177,7 @@ async function loadProducts() {
   if (!box) return;
 
   try {
-    const res = await fetch("http://localhost:3000/products");
+    const res = await fetch("https://grosgo-backend-ohy8.onrender.com/products");
     const products = await res.json();
 
     box.innerHTML = "";
@@ -217,7 +217,7 @@ async function deleteProduct(id) {
 
   try {
     const res = await fetch(
-      `http://localhost:3000/admin/products/${id}`,
+      `https://grosgo-backend-ohy8.onrender.com/admin/products/${id}`,
       { method: "DELETE" }
     );
 
@@ -236,7 +236,7 @@ async function loadUsers() {
     if (!box) return;
 
     try {
-        const res = await fetch("http://localhost:3000/users");
+        const res = await fetch("https://grosgo-backend-ohy8.onrender.com/users");
         const users = await res.json();
 
         box.innerHTML = "";
@@ -270,7 +270,7 @@ async function deleteUser(email) {
     if (!confirm("Are you sure you want to delete this user?")) return;
 
     try {
-        const res = await fetch(`http://localhost:3000/users/${email}`, {
+        const res = await fetch(`https://grosgo-backend-ohy8.onrender.com/users/${email}`, {
             method: "DELETE"
         });
 

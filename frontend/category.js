@@ -19,7 +19,7 @@ titleEl.innerText = type;
 descEl.innerText = categoryDescMap[type] || "";
 
 /* FETCH PRODUCTS FROM BACKEND */
-fetch(`http://localhost:3000/products?category=${type}`)
+fetch(`https://grosgo-backend-ohy8.onrender.com/products?category=${type}`)
   .then(res => res.json())
   .then(products => {
     container.innerHTML = "";
