@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details | GROSGO</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="left">
+            <span class="menu" id="menuBtn">&#9776;</span>
+
+            <img src="https://grosgo.co.uk/cdn/shop/files/ChatGPT_Image_Dec_31_2025_10_17_32_PM.png?v=1767219777&width=150"
+                alt="GROSGO Logo" class="logo">
+
+            <div class="side-menu" id="sideMenu">
+                <div class="side-menu-header">
+                    <span class="close-menu" onclick="closeMenu()">×</span>
+                </div>
+                <ul class="side-menu-links">
+                    <li data-lang="home" onclick="goHome()">HOME</li>
+                    <li data-lang="categories" onclick="openCategories()">CATEGORIES</li>
+                    <li data-lang="search" onclick="goSearch()">SEARCH</li>
+                    <li data-lang="contact" onclick="goContact()">CONTACT US</li>
+                    <li data-lang="about" onclick="goAbout()">ABOUT US</li>
+                    <li data-lang="myOrders" onclick="openOrders()">My Orders</li>
+                    <li onclick="openWishlist()">Wishlist</li>
+                    
+
+
+                </ul>
+            </div>
+
+            <!-- ✅ THIS WAS MISSING -->
+            <div class="menu-overlay" id="menuOverlay"></div>
+        </div>
+
+
+
+
+
+        <div class="center" id="home">
+            <h1>GROSGO</h1>
+        </div>
+
+        <!-- Language Selector -->
+        <select id="languageSelect" class="language-select">
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option>
+            <option value="hi">हिंदी</option>
+        </select>
+
+
+        <div class="right" id="search">
+            <input type="text" placeholder="Search..." class="search-bar" id="searchInput">
+
+
+            <div class="cart" onclick="toggleCart()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+
+            <select id="sortPrice">
+                <option value="">Sort</option>
+                <option value="low">Low → High</option>
+                <option value="high">High → Low</option>
+            </select>
+
+
+
+            <button id="darkModeBtn">🌙</button>
+            <button id="logoutBtn" data-lang="logout">Logout</button>
+        </div>
+    </header>
+    <!-- PRODUCT DETAILS -->
+    <section class="product-page">
+        <div class="product-detail-layout">
+
+            <!-- IMAGE -->
+            <div class="product-image-section">
+                <img id="productImage" src="" alt="">
+            </div>
+
+            <!-- INFO -->
+            <div class="product-info-section">
+                <h2 id="productName"></h2>
+                <p class="detail-price">₹<span id="productPrice"></span></p>
+                <p>Taxes included</p>
+
+                <div class="quantity-box">
+                    <button onclick="changeQty(-1)">−</button>
+                    <span id="qty">1</span>
+                    <button onclick="changeQty(1)">+</button>
+                </div>
+
+        <div class="product-actions">
+  <button onclick="addProductPageToCart()">
+    🛒 Add to Cart
+  </button>
+
+  <button onclick="addProductPageToWishlist()">
+    ❤️ Wishlist
+  </button>
+</div>
+
+
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- YOU MAY ALSO LIKE -->
+    <section class="recommend">
+        <h2>You may also like</h2>
+
+        <div class="products" id="recommendProducts">
+            <!-- Cards will be injected by JS -->
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer id="footer">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h3>About GROSGO</h3>
+                <p>GROSGO is an online Indian grocery store offering authentic products, fresh quality,
+                    and convenient doorstep delivery. We make it easy to enjoy the flavours of India with
+                    trusted brands, great prices, and reliable service.</p>
+            </div>
+
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#productList">Products</a></li>
+                    <li><a href="#search">Search</a></li>
+                    <li><a href="#footer">About Us</a></li>
+                </ul>
+
+            </div>
+
+            <div class="footer-section contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@grosgo.com</p>
+                <p>Phone: +91 12345 67890</p>
+                <p>Address: Mumbai, India</p>
+            </div>
+
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com" target="_blank" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-facebook" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017.75-3.192 3.227-3.192.934 0 1.813.125 2.054.181v2.37l-1.135.022c-1.108 0-1.623.825-1.623 1.958V8.05h2.573l-.667 2.375h-1.906v5.625c3.824-.604 6.75-3.934 6.75-7.951z" />
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com" target="_blank" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                        </svg>
+                    </a>
+
+                    <a href="https://twitter.com" target="_blank" title="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            viewBox="0 0 24 24">
+                            <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 
+        1.014-.611 1.794-1.574 2.163-2.723
+        -.951.564-2.005.974-3.127 1.195
+        -.897-.957-2.178-1.555-3.594-1.555
+        -3.179 0-5.515 2.966-4.797 6.045
+        -4.091-.205-7.719-2.165-10.148-5.144
+        -1.29 2.213-.669 5.108 1.523 6.574
+        -.806-.026-1.566-.247-2.229-.616
+        -.054 2.281 1.581 4.415 3.949 4.89
+        -.693.188-1.452.232-2.224.084
+        .626 1.956 2.444 3.379 4.6 3.419
+        -2.07 1.623-4.678 2.348-7.29 2.04
+        2.179 1.397 4.768 2.212 7.548 2.212
+        9.142 0 14.307-7.721 13.995-14.646
+        .962-.695 1.797-1.562 2.457-2.549z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+
+    <!-- ORDERS MODAL -->
+    <div id="orders-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>My Orders</h3>
+                <span class="close-cart" onclick="closeOrders()">×</span>
+            </div>
+
+            <div class="cart-items" id="orders-list"></div>
+        </div>
+    </div>
+
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Your Cart</h3>
+                <span class="close-cart" onclick="toggleCart()">&times;</span>
+            </div>
+            <div id="cart-items" class="cart-items">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="cart-footer">
+                <p>Total: ₹<span id="cart-total">0</span></p>
+                <button class="checkout-btn" data-lang="checkout">Checkout</button>
+            </div>
+        </div>
+    </div>
+    <!-- CHECKOUT MODAL -->
+    <div id="checkout-modal" class="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Checkout</h3>
+                <span class="close-cart" onclick="toggleCheckout()">&times;</span>
+            </div>
+
+            <div class="cart-items" id="checkout-items"></div>
+
+            <div style="padding:20px">
+                <p><strong>Total: ₹<span id="checkout-total">0</span></strong></p>
+
+                <label>Payment Method</label>
+<select id="paymentMethod" onchange="togglePaymentUI()">
+    <option value="UPI">UPI</option>
+    <option value="Card">Card</option>
+    <option value="Cash on Delivery">Cash on Delivery</option>
+</select>
+
+<!-- UPI UI -->
+<div id="upiBox" class="payment-box">
+    <input type="text" id="upiId" placeholder="Enter UPI ID (example@upi)">
+</div>
+
+<!-- Card UI -->
+<div id="cardBox" class="payment-box" style="display:none">
+    <input type="text" id="cardNumber" placeholder="Card Number">
+    <input type="text" id="cardExpiry" placeholder="MM/YY">
+    <input type="password" id="cardCVV" placeholder="CVV">
+</div>
+
+<br>
+<button class="checkout-btn" onclick="placeOrder()">Pay & Place Order</button>
+            </div>
+        </div>
+    </div>
+
+    
+<!-- WISHLIST MODAL -->
+<div id="wishlist-modal" class="cart-modal">
+    <div class="cart-content">
+        <div class="cart-header">
+            <h3>My Wishlist ❤️</h3>
+            <span class="close-cart" onclick="closeWishlist()">×</span>
+        </div>
+
+        <div class="cart-items" id="wishlist-items"></div>
+    </div>
+</div>
+
+<!-- DELIVERY TRACKING MODAL -->
+<div id="delivery-modal" class="cart-modal">
+  <div class="cart-content">
+    <div class="cart-header">
+      <h3>Order Tracking 🚚</h3>
+      <span class="close-cart" onclick="closeDelivery()">×</span>
+    </div>
+
+    <div id="delivery-status" class="delivery-steps">
+                <div class="step" data-step="Placed">Placed</div>
+                <div class="step" data-step="Packed">Packed</div>
+                <div class="step" data-step="Out for Delivery">Out for Delivery</div>
+                <div class="step" data-step="Delivered">Delivered</div>
+            </div>
+
+    <iframe
+      id="delivery-map"
+      width="100%"
+      height="350"
+      style="border:0"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      src="">
+    </iframe>
+    <!-- DELIVERY RIDER -->
+<div id="delivery-rider">🚴‍♂️</div>
+
+  </div>
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- <script src="script.js"></script>
+<script src="header.js"></script>
+<script src="product.js"></script> -->
+    <script src="script.js"></script>
+    <script src="header.js"></script>
+    <script src="product.js"></script>
+
+
+
+</body>
+
+</html>

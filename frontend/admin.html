@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel | GROSGO</title>
+  <link rel="stylesheet" href="admin.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="admin-body">
+
+  <!-- LOGIN -->
+  <div id="adminLogin" class="admin-login">
+    <h2>Admin Login</h2>
+    <input id="adminEmail" placeholder="Email">
+    <input id="adminPassword" type="password" placeholder="Password">
+    <button onclick="adminLogin()">Login</button>
+  </div>
+
+  <!-- PANEL -->
+  <div id="adminPanel" class="admin-panel" style="display:none">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <h2>GROSGO</h2>
+      <ul>
+        <li onclick="showSection('dashboard')">📊 Dashboard</li>
+        <li onclick="showSection('orders')">📦 Orders</li>
+        <li onclick="showSection('products')">🛒 Products</li>
+        <li onclick="showSection('users')">👥 Users</li>
+        <li class="logout" onclick="adminLogout()">🚪 Logout</li>
+      </ul>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="admin-main">
+
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="admin-section">
+        <h1>Dashboard</h1>
+
+        <div class="admin-cards">
+          <div class="admin-card">
+            <h3>Users</h3>
+            <p id="totalUsers">0</p>
+          </div>
+          <div class="admin-card">
+            <h3>Orders</h3>
+            <p id="totalOrders">0</p>
+          </div>
+          <div class="admin-card">
+            <h3>Revenue</h3>
+            <p>₹<span id="totalRevenue">0</span></p>
+          </div>
+          <div class="admin-card warning">
+            <h3>Pending</h3>
+            <p id="pendingOrders">0</p>
+          </div>
+        </div>
+
+        <canvas id="ordersChart"></canvas>
+      </section>
+
+      <!-- ORDERS -->
+      <section id="orders" class="admin-section" style="display:none">
+        <h1>Orders</h1>
+        <div id="adminOrders"></div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="products" class="admin-section" style="display:none">
+        <h1>Products</h1>
+
+        <div class="product-form">
+          <input id="pName" placeholder="Product Name">
+
+          <select id="pCategory">
+            <option value="">Select Category</option>
+
+            <!-- NORMAL CATEGORIES -->
+            <option value="Vegetables">Vegetables</option>
+            <option value="Fruits">Fruits</option>
+            <option value="Dairy">Dairy</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Rice">Rice</option>
+            <option value="Batter">Batter</option>
+
+            <option value="offer">🔥 Up to 50% Off</option>
+            <option value="best_seller">⭐ Best Sellers</option>
+            <option value="combo">🎁 Special Combos</option>
+           <option value="festival_combo">🎁 Festival Combos</option>
+            <option value="featured">🛒 Products</option>
+
+          </select>
+
+
+
+
+
+          <input id="pPrice" placeholder="Price">
+          <input id="pStock" placeholder="Stock">
+          <input id="pImage" placeholder="Image URL">
+
+          <button onclick="addProduct()">Add Product</button>
+
+        </div>
+
+        <div id="adminProducts"></div>
+      </section>
+
+      <!-- USERS -->
+      <section id="users" class="admin-section" style="display:none">
+        <h1>Users</h1>
+        <div id="adminUsers"></div>
+      </section>
+
+
+
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>
